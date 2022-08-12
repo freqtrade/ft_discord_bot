@@ -1,0 +1,31 @@
+{
+    "freqai":"FreqAI Docs: https://github.com/freqtrade/freqtrade/blob/feat/freqai/docs/freqai.md. Currently in beta-testing.",
+
+    "informative":"Informative pairs give you access to information from other/specific pairs and can be used on timeframes larger than your current strategy, e.g. 5m strategy, 1h informatives: https://www.freqtrade.io/en/stable/strategy-customization/#informative-pairs",
+
+    "pairlists":"Pairlists are a core part of how your strategy will perform. There are 2 core pairlist handlers, static and volume-based: https://www.freqtrade.io/en/stable/plugins/#pairlists-and-pairlist-handlers. Note that VolumePairList does not support backtesting mode. Look at the test-pairlist command for how to generate static lists from volume-based and other plugins.",
+
+    "docker":"Docker packages up all FT dependencies suitable for most strategies so makes it easier to install for first-timers, or people wanting scalable deployments. Head to #docker-support and check the docs: https://www.freqtrade.io/en/stable/docker_quickstart/",
+
+    "orders":"The order type and orderbook determine how and at what prices your strategy will buy and sell. It can make big differences to how your strategy behaves, so it's good to understand what each of them do. https://www.freqtrade.io/en/stable/configuration/#prices-used-for-orders",
+
+    "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
+
+    "traps":"There are certain things you can do in a strategy that will make it perform differently in backtesting compared to dry/live. In most cases, the backtesting results will look way better so can lead to unpredictable losses. Check out https://brookmiles.github.io/freqtrade-stuff/2021/04/12/backtesting-traps/ for hints about what to avoid.",
+
+    "hyperopt":"Hyperopting tries to find parameters that can improve your strategy by reducing drawdown, increasing average profit per trade, improving Sharpe and Sortino values, etc. It is not a magic bullet to immediately make your strategy better, and be careful to hyperopt a timerange that is NOT the same timerange that you're testing - you'll overfit. See: https://www.freqtrade.io/en/stable/hyperopt/",
+
+    "NFI":"No, we don't understand it either. Head over to their discord.",
+
+    "data":"You may need historical data to run a backtest or even a strategy itself in dry or live. Read the docs here: https://www.freqtrade.io/en/stable/data-download/",
+
+    "dry":"It's recommended to run a strategy in dry mode before going live to make sure performance matches what you expect from backtests. Most people recommend running a strategy dry for at least two weeks, preferably longer.",
+
+    "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`). You may need to download historical candle data (see `**data`). You will likely need a powerful PC to perform backtesting depending on stategy complexity.",
+
+    "nobuys":"Your bot might not make trades immediately. Check that your stake_amount is high enough (over $20), your wallet size is enough to cover your number of slots (open_trade_slots * stake_amount), your tradeable_balance_ratio is not 1, and that there are no errors in the logs. If everything looks OK, just be patient!",
+
+    "FAQ":"Please read the FAQ, which explains this topic: https://www.freqtrade.io/en/stable/faq/#freqtrade-common-issues",
+
+    "docs":"Please make sure to familiarize yourself with the documentation, which can be found here: https://www.freqtrade.io/"
+}
