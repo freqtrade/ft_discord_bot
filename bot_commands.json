@@ -27,5 +27,7 @@
 
     "FAQ":"Please read the FAQ, which explains this topic: https://www.freqtrade.io/en/stable/faq/#freqtrade-common-issues",
 
-    "docs":"Please make sure to familiarize yourself with the documentation, which can be found here: https://www.freqtrade.io/"
+    "docs":"Please make sure to familiarize yourself with the documentation, which can be found here: https://www.freqtrade.io/",
+
+    "rr":"Risk reward (RR) lets you compare the expected returns versus the risk, e.g. 1:2 means an expected risk of 1 unit currency to 2 units return. An example custom_stoploss implementing RR can be found here: https://github.com/freqtrade/freqtrade-strategies/blob/main/user_data/strategies/FixedRiskRewardLoss.py",
 }
