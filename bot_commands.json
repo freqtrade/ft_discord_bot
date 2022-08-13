@@ -47,5 +47,5 @@
     
     "ticker":"Yes you can get ticker data in your strategy, but note that it varies by exchange and cannot be used in backtesting: https://www.freqtrade.io/en/stable/strategy-customization/#tickerpair",
     
-    "examples":"There are lots of example stratgies in the #strategy collection or in the main freqtrade-strategies repo: https://github.com/freqtrade/freqtrade-strategies"
+    "examples":"There are lots of example strategies in the #strategy collection or in the main freqtrade-strategies repo: https://github.com/freqtrade/freqtrade-strategies"
 }
