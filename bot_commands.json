@@ -29,5 +29,23 @@
 
     "docs":"Please make sure to familiarize yourself with the documentation, which can be found here: https://www.freqtrade.io/",
 
-    "rr":"Risk reward (RR) lets you compare the expected returns versus the risk, e.g. 1:2 means an expected risk of 1 unit currency to 2 units return. An example custom_stoploss implementing RR can be found here: https://github.com/freqtrade/freqtrade-strategies/blob/main/user_data/strategies/FixedRiskRewardLoss.py"
+    "rr":"Risk reward (RR) lets you compare the expected returns versus the risk, e.g. 1:2 means an expected risk of 1 unit currency to 2 units return. An example custom_stoploss implementing RR can be found here: https://github.com/freqtrade/freqtrade-strategies/blob/main/user_data/strategies/FixedRiskRewardLoss.py",
+    
+    "best":"There is no best",
+    
+    "basics":"Please familiarise yourself with fundamental freqtrade terminology and bot execution logic: https://www.freqtrade.io/en/stable/bot-basics/",
+    
+    "callbacks":"You can use various callback functions in your strategy to perform behaviour outside the `populate_` functions: https://www.freqtrade.io/en/stable/strategy-callbacks/",
+    
+    "telegram":"Detailed instructions for setting up the Telegram service for freqtrade are here: https://www.freqtrade.io/en/stable/telegram-usage/",
+    
+    "tunnel":"When running freqtrade on a VPS or other machine open to the internet, it's recommended that instead of exposing FreqUI on 0.0.0.0, use 127.0.0.1 and set up a local port forwarding SSH tunnel. Details can be found here: https://linuxize.com/post/how-to-setup-ssh-tunneling/#local-port-forwarding",
+    
+    "shorting":"Shorting is not supported on spot, and supported on *isolated futures only*, i.e. cross margin is not yet available: https://www.freqtrade.io/en/stable/leverage/#shorting",
+    
+    "lookahead":"Backtesting processes all candles over your timerange at once, not row by row. So certain indicators or ways you access information in your strategy can introduce lookahead, i.e. using information from candles in the future. The most common things to avoid are using `.shift()` with negative values, and `iat[-1]` or `iloc` in `populate_` functions. See `**traps`, https://www.freqtrade.io/en/stable/strategy-customization/#common-mistakes-when-developing-strategies, and https://www.freqtrade.io/en/stable/strategy-advanced/#dataframe-access",
+    
+    "ticker":"Yes you can get ticker data in your strategy, but note that it varies by exchange and cannot be used in backtesting: https://www.freqtrade.io/en/stable/strategy-customization/#tickerpair",
+    
+    "examples":"There are lots of example stratgies in the #strategy collection or in the main freqtrade-strategies repo: https://github.com/freqtrade/freqtrade-strategies"
 }
