@@ -1,51 +1,51 @@
 {
-    "freqai":"FreqAI Docs: https://github.com/freqtrade/freqtrade/blob/feat/freqai/docs/freqai.md. Currently in beta-testing.",
+    "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`). You may need to download historical candle data (see `**data`). You will likely need a powerful PC to perform backtesting depending on stategy complexity.",
 
-    "informative":"Informative pairs give you access to information from other/specific pairs and can be used on timeframes larger than your current strategy, e.g. 5m strategy, 1h informatives: https://www.freqtrade.io/en/stable/strategy-customization/#informative-pairs",
+    "basics":"Please familiarise yourself with fundamental freqtrade terminology and bot execution logic: https://www.freqtrade.io/en/stable/bot-basics/",
 
-    "pairlists":"Pairlists are a core part of how your strategy will perform. There are 2 core pairlist handlers, static and volume-based: https://www.freqtrade.io/en/stable/plugins/#pairlists-and-pairlist-handlers. Note that VolumePairList does not support backtesting mode. Look at the test-pairlist command for how to generate static lists from volume-based and other plugins.",
+    "best":"There is no best",
 
-    "docker":"Docker packages up all FT dependencies suitable for most strategies so makes it easier to install for first-timers, or people wanting scalable deployments. Head to #docker-support and check the docs: https://www.freqtrade.io/en/stable/docker_quickstart/",
-
-    "orders":"The order type and orderbook determine how and at what prices your strategy will buy and sell. It can make big differences to how your strategy behaves, so it's good to understand what each of them do. https://www.freqtrade.io/en/stable/configuration/#prices-used-for-orders",
-
-    "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
-
-    "traps":"There are certain things you can do in a strategy that will make it perform differently in backtesting compared to dry/live. In most cases, the backtesting results will look way better so can lead to unpredictable losses. Check out https://brookmiles.github.io/freqtrade-stuff/2021/04/12/backtesting-traps/ for hints about what to avoid.",
-
-    "hyperopt":"Hyperopting tries to find parameters that can improve your strategy by reducing drawdown, increasing average profit per trade, improving Sharpe and Sortino values, etc. It is not a magic bullet to immediately make your strategy better, and be careful to hyperopt a timerange that is NOT the same timerange that you're testing - you'll overfit. See: https://www.freqtrade.io/en/stable/hyperopt/",
-
-    "NFI":"No, we don't understand it either. Head over to their discord.",
+    "callbacks":"You can use various callback functions in your strategy to perform behaviour outside the `populate_` functions: https://www.freqtrade.io/en/stable/strategy-callbacks/",
 
     "data":"You may need historical data to run a backtest or even a strategy itself in dry or live. Read the docs here: https://www.freqtrade.io/en/stable/data-download/",
 
-    "dry":"It's recommended to run a strategy in dry mode before going live to make sure performance matches what you expect from backtests. Most people recommend running a strategy dry for at least two weeks, preferably longer.",
-
-    "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`). You may need to download historical candle data (see `**data`). You will likely need a powerful PC to perform backtesting depending on stategy complexity.",
-
-    "nobuys":"Your bot might not make trades immediately. Check that your stake_amount is high enough (over $20), your wallet size is enough to cover your number of slots (open_trade_slots * stake_amount), your tradeable_balance_ratio is not 1, and that there are no errors in the logs. If everything looks OK, just be patient!",
-
-    "FAQ":"Please read the FAQ, which explains this topic: https://www.freqtrade.io/en/stable/faq/#freqtrade-common-issues",
+    "docker":"Docker packages up all FT dependencies suitable for most strategies so makes it easier to install for first-timers, or people wanting scalable deployments. Head to #docker-support and check the docs: https://www.freqtrade.io/en/stable/docker_quickstart/",
 
     "docs":"Please make sure to familiarize yourself with the documentation, which can be found here: https://www.freqtrade.io/",
 
-    "rr":"Risk reward (RR) lets you compare the expected returns versus the risk, e.g. 1:2 means an expected risk of 1 unit currency to 2 units return. An example custom_stoploss implementing RR can be found here: https://github.com/freqtrade/freqtrade-strategies/blob/main/user_data/strategies/FixedRiskRewardLoss.py",
-    
-    "best":"There is no best",
-    
-    "basics":"Please familiarise yourself with fundamental freqtrade terminology and bot execution logic: https://www.freqtrade.io/en/stable/bot-basics/",
-    
-    "callbacks":"You can use various callback functions in your strategy to perform behaviour outside the `populate_` functions: https://www.freqtrade.io/en/stable/strategy-callbacks/",
-    
-    "telegram":"Detailed instructions for setting up the Telegram service for freqtrade are here: https://www.freqtrade.io/en/stable/telegram-usage/",
-    
-    "tunnel":"When running freqtrade on a VPS or other machine open to the internet, it's recommended that instead of exposing FreqUI on 0.0.0.0, use 127.0.0.1 and set up a local port forwarding SSH tunnel. Details can be found here: https://linuxize.com/post/how-to-setup-ssh-tunneling/#local-port-forwarding",
-    
-    "shorting":"Shorting is not supported on spot, and supported on *isolated futures only*, i.e. cross margin is not yet available: https://www.freqtrade.io/en/stable/leverage/#shorting",
-    
+    "dry":"It's recommended to run a strategy in dry mode before going live to make sure performance matches what you expect from backtests. Most people recommend running a strategy dry for at least two weeks, preferably longer.",
+
+    "examples":"There are lots of example strategies in the #strategy-collection or in the main freqtrade-strategies repo: https://github.com/freqtrade/freqtrade-strategies",
+
+    "FAQ":"Please read the FAQ, which explains this topic: https://www.freqtrade.io/en/stable/faq/#freqtrade-common-issues",
+
+    "freqai":"FreqAI Docs: https://github.com/freqtrade/freqtrade/blob/feat/freqai/docs/freqai.md. Currently in beta-testing.",
+
+    "hyperopt":"Hyperopting tries to find parameters that can improve your strategy by reducing drawdown, increasing average profit per trade, improving Sharpe and Sortino values, etc. It is not a magic bullet to immediately make your strategy better, and be careful to hyperopt a timerange that is NOT the same timerange that you're testing - you'll overfit. See: https://www.freqtrade.io/en/stable/hyperopt/",
+
+    "informative":"Informative pairs give you access to information from other/specific pairs and can be used on timeframes larger than your current strategy, e.g. 5m strategy, 1h informatives: https://www.freqtrade.io/en/stable/strategy-customization/#informative-pairs",
+
     "lookahead":"Backtesting processes all candles over your timerange at once, not row by row. So certain indicators or ways you access information in your strategy can introduce lookahead, i.e. using information from candles in the future. The most common things to avoid are using `.shift()` with negative values, and `iat[-1]` or `iloc` in `populate_` functions. See `**traps`, https://www.freqtrade.io/en/stable/strategy-customization/#common-mistakes-when-developing-strategies, and https://www.freqtrade.io/en/stable/strategy-advanced/#dataframe-access",
-    
+
+    "NFI":"No, we don't understand it either. Head over to their discord.",
+
+    "nobuys":"Your bot might not make trades immediately. Check that your stake_amount is high enough (over $20), your wallet size is enough to cover your number of slots (open_trade_slots * stake_amount), your tradeable_balance_ratio is not 1, and that there are no errors in the logs. If everything looks OK, just be patient!",
+
+    "orders":"The order type and orderbook determine how and at what prices your strategy will buy and sell. It can make big differences to how your strategy behaves, so it's good to understand what each of them do. https://www.freqtrade.io/en/stable/configuration/#prices-used-for-orders",
+
+    "pairlists":"Pairlists are a core part of how your strategy will perform. There are 2 core pairlist handlers, static and volume-based: https://www.freqtrade.io/en/stable/plugins/#pairlists-and-pairlist-handlers. Note that VolumePairList does not support backtesting mode. Look at the test-pairlist command for how to generate static lists from volume-based and other plugins.",
+
+    "rr":"Risk reward (RR) lets you compare the expected returns versus the risk, e.g. 1:2 means an expected risk of 1 unit currency to 2 units return. An example custom_stoploss implementing RR can be found here: https://github.com/freqtrade/freqtrade-strategies/blob/main/user_data/strategies/FixedRiskRewardLoss.py",
+
+    "shorting":"Shorting is not supported on spot, and supported on *isolated futures only*, i.e. cross margin is not yet available: https://www.freqtrade.io/en/stable/leverage/#shorting",
+
+    "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
+
+    "telegram":"Detailed instructions for setting up the Telegram service for freqtrade are here: https://www.freqtrade.io/en/stable/telegram-usage/",
+
     "ticker":"Yes you can get ticker data in your strategy, but note that it varies by exchange and cannot be used in backtesting: https://www.freqtrade.io/en/stable/strategy-customization/#tickerpair",
-    
-    "examples":"There are lots of example strategies in the #strategy-collection or in the main freqtrade-strategies repo: https://github.com/freqtrade/freqtrade-strategies"
+
+    "traps":"There are certain things you can do in a strategy that will make it perform differently in backtesting compared to dry/live. In most cases, the backtesting results will look way better so can lead to unpredictable losses. Check out https://brookmiles.github.io/freqtrade-stuff/2021/04/12/backtesting-traps/ for hints about what to avoid.",
+
+    "tunnel":"When running freqtrade on a VPS or other machine open to the internet, it's recommended that instead of exposing FreqUI on 0.0.0.0, use 127.0.0.1 and set up a local port forwarding SSH tunnel. Details can be found here: https://linuxize.com/post/how-to-setup-ssh-tunneling/#local-port-forwarding",
 }
