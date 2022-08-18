@@ -6,6 +6,8 @@
     "best":"There is no best",
 
     "callbacks":"You can use various callback functions in your strategy to perform behaviour outside the `populate_` functions: https://www.freqtrade.io/en/stable/strategy-callbacks/",
+    
+    "crosspost":"Posting the same question in more than one channel is like going into someone's house and shouting in every room asking where the oven is, when the oven is clearly in the kitchen. Stop it. Pick the most suitable channel for your question. Repeat offenders will be kicked.",
 
     "data":"You may need historical data to run a backtest or even a strategy itself in dry or live. Read the docs here: https://www.freqtrade.io/en/stable/data-download/",
 
