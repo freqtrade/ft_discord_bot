@@ -47,6 +47,8 @@
 
     "ticker":"Yes you can get ticker data in your strategy, but note that it varies by exchange and cannot be used in backtesting: https://www.freqtrade.io/en/stable/strategy-customization/#tickerpair",
 
+    "tv":"TradingView often calculates indicators differently to other libraries such as TA-lib, and it allows you to do weird things like zero-lag adjustment and repainting, so it's unwise to compare Tradingview's indicators or strategies with its python equivalent. Don't use Tradingview to create or optimize your freqtrade strategy.",
+    
     "traps":"There are certain things you can do in a strategy that will make it perform differently in backtesting compared to dry/live. In most cases, the backtesting results will look way better so can lead to unpredictable losses. Check out https://brookmiles.github.io/freqtrade-stuff/2021/04/12/backtesting-traps/ for hints about what to avoid.",
 
     "tunnel":"When running freqtrade on a VPS or other machine open to the internet, it's recommended that instead of exposing FreqUI on 0.0.0.0, use 127.0.0.1 and set up a local port forwarding SSH tunnel. Details can be found here: https://linuxize.com/post/how-to-setup-ssh-tunneling/#local-port-forwarding"
