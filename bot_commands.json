@@ -51,5 +51,7 @@
     
     "traps":"There are certain things you can do in a strategy that will make it perform differently in backtesting compared to dry/live. In most cases, the backtesting results will look way better so can lead to unpredictable losses. Check out https://brookmiles.github.io/freqtrade-stuff/2021/04/12/backtesting-traps/ for hints about what to avoid.",
 
-    "tunnel":"When running freqtrade on a VPS or other machine open to the internet, it's recommended that instead of exposing FreqUI on 0.0.0.0, use 127.0.0.1 and set up a local port forwarding SSH tunnel. Details can be found here: https://linuxize.com/post/how-to-setup-ssh-tunneling/#local-port-forwarding"
+    "tunnel":"When running freqtrade on a VPS or other machine open to the internet, it's recommended that instead of exposing FreqUI on 0.0.0.0, use 127.0.0.1 and set up a local port forwarding SSH tunnel. Details can be found here: https://linuxize.com/post/how-to-setup-ssh-tunneling/#local-port-forwarding",
+    
+    "vps":"You can rent a virtual server (VPS) to host your bot. THere are many to choose from, and each have pros and cons. For simple bots, Oracle free tier or any 1vCPU provider should be sufficient, e.g. vultr, hetzner, contabo, AWS, GCP, etc. For more bots, you will need more powerful instances otherwise you will see indicator calculation lag and will miss trade entries/exits. FT does not endorse any specific VPS provider",
 }
