@@ -164,13 +164,13 @@ def add_arguments():
                         )
 
     parser.add_argument('-c', '--commands',
-                        help=('Specify the location of \
-                              the commands JSON to load'),
+                        help=('Specify the location of'
+                              'the commands JSON to load'),
                         dest='commandfile',
                         type=str,
-                        default=("https://raw.githubusercontent.com/"
-                                 "freqtrade/ft_discord_bot/master/"
-                                 "bot_commands.json")
+                        default=('https://raw.githubusercontent.com/'
+                                 'freqtrade/ft_discord_bot/master/'
+                                 'bot_commands.json')
                         )
     args = parser.parse_args()
     return vars(args)
