@@ -1,6 +1,8 @@
 {
     "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`). You may need to download historical candle data (see `**data`). You will likely need a powerful PC to perform backtesting depending on stategy complexity.",
 
+    "backticks":"Please use three backticks around your code snippets to format them in fixed width font. They are impossible to read, especially indentation, and will be deleted.",
+    
     "basics":"Please familiarise yourself with fundamental freqtrade terminology and bot execution logic: https://www.freqtrade.io/en/stable/bot-basics/",
 
     "best":"There is no best",
