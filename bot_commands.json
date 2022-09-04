@@ -33,6 +33,8 @@
 
     "lookahead":"Backtesting processes all candles over your timerange at once, not row by row. So certain indicators or ways you access information in your strategy can introduce lookahead, i.e. using information from candles in the future. The most common things to avoid are using `.shift()` with negative values, and `iat[-1]` or `iloc` in `populate_` functions. See `**traps`, https://www.freqtrade.io/en/stable/strategy-customization/#common-mistakes-when-developing-strategies, and https://www.freqtrade.io/en/stable/strategy-advanced/#dataframe-access",
 
+    "netbird":"https://netbird.io/, an alternative low-config VPN service to avoid exposing freqtrade/freqUI instances to the public internet. See also `**tailscale`",
+    
     "NFI":"No, we don't understand it either. Head over to their discord.",
 
     "nobuys":"Your bot might not make trades immediately. Check that your stake_amount is high enough (over $20), your wallet size is enough to cover your number of slots (open_trade_slots * stake_amount), your tradeable_balance_ratio is not 1, and that there are no errors in the logs. If everything looks OK, just be patient!",
