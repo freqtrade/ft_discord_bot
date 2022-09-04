@@ -19,6 +19,8 @@
 
     "dry":"It's recommended to run a strategy in dry mode before going live to make sure performance matches what you expect from backtests. Most people recommend running a strategy dry for at least two weeks, preferably longer.",
 
+    "dust":"Leftover small amounts of a traded coin after taking into account minimal trading amount and fees when you sell. It's completely normal and can be avoided on some exchanges, e.g. having some BNB in your wallet on Binance which will be used to offset the difference.",
+    
     "examples":"There are lots of example strategies in the #strategy-collection or in the main freqtrade-strategies repo: https://github.com/freqtrade/freqtrade-strategies",
 
     "FAQ":"Please read the FAQ, which explains this topic: https://www.freqtrade.io/en/stable/faq/#freqtrade-common-issues",
@@ -45,6 +47,8 @@
 
     "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
 
+    "tailscale":"Free for up to 20 devices, this service makes it easy to VPN your personal network of LAN and mobile devices, including freqtrade/freqUI running on a VPS. An alternative for SSH tunnels (see `**tunnel`).",
+    
     "telegram":"Detailed instructions for setting up the Telegram service for freqtrade are here: https://www.freqtrade.io/en/stable/telegram-usage/",
 
     "ticker":"Yes you can get ticker data in your strategy, but note that it varies by exchange and cannot be used in backtesting: https://www.freqtrade.io/en/stable/strategy-customization/#tickerpair",
