@@ -47,7 +47,7 @@
 
     "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
 
-    "tailscale":"Free for up to 20 devices, this service makes it easy to VPN your personal network of LAN and mobile devices, including freqtrade/freqUI running on a VPS. An alternative for SSH tunnels (see `**tunnel`).",
+    "tailscale":"Free for up to 20 devices, [Tailscale](https://tailscale.com/) makes it easy to VPN your personal network of LAN and mobile devices, including freqtrade/freqUI running on a VPS. An alternative for SSH tunnels (see `**tunnel`).",
     
     "telegram":"Detailed instructions for setting up the Telegram service for freqtrade are here: https://www.freqtrade.io/en/stable/telegram-usage/",
 
