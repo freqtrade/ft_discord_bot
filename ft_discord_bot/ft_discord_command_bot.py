@@ -84,8 +84,7 @@ class ft_discord_command_bot(discord.Client):
             return self.base_commands[cmd]
 
     def process_search(self, message):
-        msg = "%20".join(message)
-        full_url = f'{self.search_base_url}{msg}'
+        full_url = f'{self.search_base_url}{message}'
         return f'{self.base_commands["search"]}{full_url}'
 
     def _rate_limited(self, call=None, limit_sec=20):
@@ -155,7 +154,8 @@ class ft_discord_command_bot(discord.Client):
                     if not args:
                         await message.channel.send(
                              "The Oracle needs a query to search for.")
-                    resp = self.process_search(args)
+                    msg = "%20".join(args)
+                    resp = self.process_search(msg)
 
                 if resp:
                     if reply:
