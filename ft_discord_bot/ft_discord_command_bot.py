@@ -23,7 +23,8 @@ allowed_managers = [
     "xmatthias#2871",
     "stash86#2488",
     "Perkmeister#2394",
-    "@JoeSchr#5578"
+    "JoeSchr#5578",
+    "drafty#3608"
 ]
 
 
@@ -33,6 +34,7 @@ class ft_discord_command_bot(discord.Client):
         self._commandfile = commandfile
         self.base_commands = {}
         self.rate_limited_calls = {}
+        self.search_base_url = 'https://www.freqtrade.io/en/latest/?q='
 
     def _version(self) -> str:
         return "1.00"
@@ -81,6 +83,11 @@ class ft_discord_command_bot(discord.Client):
         if cmd in self.base_commands:
             return self.base_commands[cmd]
 
+    def process_search(self, message):
+        msg = "%20".join(message)
+        full_url = f'{self.search_base_url}{msg}'
+        return f'{self.base_commnads["search"]}{full_url}'
+
     def _rate_limited(self, call=None, limit_sec=20):
         if call is not None:
             if self.rate_limited_calls[call] is not None:
@@ -107,11 +114,12 @@ class ft_discord_command_bot(discord.Client):
             reply = reference.author
 
         # if mentioning a user specifically with `**cmd @user`
-        mention = None
+        arg1 = None
         cmds = cmdstring.split(" ")
         cmd = cmds[0]
         if len(cmds) > 1:
-            mention = cmds[1]
+            arg1 = cmds[1]
+            args = cmds[1:]
 
         # all commands start with **. this can be customised.
         if cmd.startswith('**'):
@@ -141,15 +149,21 @@ class ft_discord_command_bot(discord.Client):
 
             else:
                 # check command against known loaded list of commands
-                resp = self.process_command(cmd)
+                if cmd != "**search":
+                    resp = self.process_command(cmd)
+                elif cmd == "**search":
+                    if not args:
+                        await message.channel.send(
+                             "The Oracle needs a query to search for.")
+                    resp = self.process_search(args)
 
                 if resp:
                     if reply:
                         # if replying to someone using discords reply feature
-                        await message.channel.send(f"{reply.mention} {resp}")
-                    elif mention:
+                        await message.channel.send(f"{reply.arg1} {resp}")
+                    elif arg1:
                         # if mentioning a user specifically with `**cmd @user`
-                        await message.channel.send(f"{mention} {resp}")
+                        await message.channel.send(f"{arg1} {resp}")
                     else:
                         # basic response
                         await message.channel.send(f"{resp}")
