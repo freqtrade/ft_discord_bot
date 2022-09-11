@@ -86,7 +86,7 @@ class ft_discord_command_bot(discord.Client):
     def process_search(self, message):
         msg = "%20".join(message)
         full_url = f'{self.search_base_url}{msg}'
-        return f'{self.base_commnads["search"]}{full_url}'
+        return f'{self.base_commands["search"]}{full_url}'
 
     def _rate_limited(self, call=None, limit_sec=20):
         if call is not None:
