@@ -163,7 +163,7 @@ class ft_discord_command_bot(discord.Client):
                         await message.channel.send(f"{reply.arg1} {resp}")
                     elif arg1:
                         if cmd == "**search":
-                            await message.channel.send(f"`{arg1}`? {resp}")
+                            await message.channel.send(f"`{msg}`? {resp}")
                         else:
                             # if mentioning a user specifically with `**cmd @user`
                             await message.channel.send(f"{arg1} {resp}")
