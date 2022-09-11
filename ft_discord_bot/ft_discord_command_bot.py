@@ -151,7 +151,7 @@ class ft_discord_command_bot(discord.Client):
                 # check command against known loaded list of commands
                 if cmd != "**search":
                     resp = self.process_command(cmd)
-                else:
+                elif cmd == "**search":
                     if not args:
                         await message.channel.send(
                              "The Oracle needs a search term(s) to help it"
