@@ -45,7 +45,7 @@
 
     "rr":"Risk reward (RR) lets you compare the expected returns versus the risk, e.g. 1:2 means an expected risk of 1 unit currency to 2 units return. An example custom_stoploss implementing RR can be found here: https://github.com/freqtrade/freqtrade-strategies/blob/main/user_data/strategies/FixedRiskRewardLoss.py",
 
-    "search": "I found some interesting information related to that topic here ",
+    "search": "I found information about that here: ",
 
     "shorting":"Shorting is not supported on spot, and supported on *isolated futures only*, i.e. cross margin is not yet available: https://www.freqtrade.io/en/stable/leverage/#shorting",
 
