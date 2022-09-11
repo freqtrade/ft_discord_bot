@@ -23,7 +23,7 @@ allowed_managers = [
     "xmatthias#2871",
     "stash86#2488",
     "Perkmeister#2394",
-    "@JoeSchr#5578",
+    "JoeSchr#5578",
     "drafty#3608"
 ]
 
@@ -34,7 +34,7 @@ class ft_discord_command_bot(discord.Client):
         self._commandfile = commandfile
         self.base_commands = {}
         self.rate_limited_calls = {}
-        self.base_url = 'https://www.freqtrade.io/en/latest/?q='
+        self.search_base_url = 'https://www.freqtrade.io/en/latest/?q='
 
     def _version(self) -> str:
         return "1.00"
@@ -85,7 +85,7 @@ class ft_discord_command_bot(discord.Client):
 
     def process_search(self, message):
         msg = "%20".join(message)
-        full_url = f'{self.base_url}{msg}'
+        full_url = f'{self.search_base_url}{msg}'
         return f'{self.base_commnads["search"]}{full_url}'
 
     def _rate_limited(self, call=None, limit_sec=20):
@@ -154,8 +154,7 @@ class ft_discord_command_bot(discord.Client):
                 elif cmd == "**search":
                     if not args:
                         await message.channel.send(
-                             "The Oracle needs a search term(s) to help it"
-                             " execute your query.")
+                             "The Oracle needs a query to search for.")
                     resp = self.process_search(args)
 
                 if resp:
