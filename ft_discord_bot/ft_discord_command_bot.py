@@ -35,6 +35,7 @@ class ft_discord_command_bot(discord.Client):
         self.base_commands = {}
         self.rate_limited_calls = {}
         self.search_base_url = 'https://www.freqtrade.io/en/latest/?q='
+        self.gh_base_url = 'https://github.com/freqtrade/freqtrade/search?q='
 
     def _version(self) -> str:
         return "1.00"
@@ -87,6 +88,11 @@ class ft_discord_command_bot(discord.Client):
         msg = message.replace(" ", "%20")
         full_url = f'{self.search_base_url}{msg}'
         return f'{self.base_commands["search"]}{full_url}'
+
+    def process_gh(self, message):
+        msg = message.replace(" ", "%20")
+        full_url = f'{self.gh_base_url}{msg}'
+        return f'{full_url}'
 
     def _rate_limited(self, call=None, limit_sec=20):
         if call is not None:
@@ -157,7 +163,13 @@ class ft_discord_command_bot(discord.Client):
                              "The Oracle needs a query to search for.")
                     search_msg = " ".join(args)
                     resp = self.process_search(search_msg)
-
+                elif cmd == "**gh":
+                    if not args:
+                        resp = self.process_command(cmd)
+                    else:
+                        gh_search_msg = " ".join(args)
+                        resp = self.process_gh(gh_search_msg)
+                
                 if resp:
                     if reply:
                         # if replying to someone using discords reply feature
@@ -165,6 +177,8 @@ class ft_discord_command_bot(discord.Client):
                     elif arg1:
                         if cmd == "**search":
                             await message.channel.send(f"`{search_msg}`? {resp}")
+                        elif cmd == "**gh":
+                            await message.channel.send(f"`{gh_search_msg}` search results from GitHub: {resp}")
                         else:
                             # if mentioning a user specifically with `**cmd @user`
                             await message.channel.send(f"{arg1} {resp}")
