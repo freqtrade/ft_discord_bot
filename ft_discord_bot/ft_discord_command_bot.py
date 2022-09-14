@@ -164,6 +164,7 @@ class ft_discord_command_bot(discord.Client):
                     search_msg = " ".join(args)
                     resp = self.process_search(search_msg)
                 elif cmd == "**gh":
+                    gh_search_msg = ""
                     if not args:
                         resp = self.process_command(cmd)
                     else:
