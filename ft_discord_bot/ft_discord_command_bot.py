@@ -155,9 +155,7 @@ class ft_discord_command_bot(discord.Client):
 
             else:
                 # check command against known loaded list of commands
-                if cmd != "**search":
-                    resp = self.process_command(cmd)
-                elif cmd == "**search":
+                if cmd == "**search":
                     if not args:
                         await message.channel.send(
                              "The Oracle needs a query to search for.")
@@ -165,11 +163,14 @@ class ft_discord_command_bot(discord.Client):
                     resp = self.process_search(search_msg)
                 elif cmd == "**gh":
                     gh_search_msg = ""
+
                     if not args:
                         resp = self.process_command(cmd)
                     else:
                         gh_search_msg = " ".join(args)
                         resp = self.process_gh(gh_search_msg)
+                else:
+                    resp = self.process_command(cmd)
                 
                 if resp:
                     if reply:
