@@ -36,6 +36,7 @@ class ft_discord_command_bot(discord.Client):
         self.rate_limited_calls = {}
         self.search_base_url = 'https://www.freqtrade.io/en/latest/?q='
         self.gh_base_url = 'https://github.com/freqtrade/freqtrade/search?q='
+        self.lmgtfy_base_url = 'https://letmegooglethat.com/?q='
 
     def _version(self) -> str:
         return "1.00"
@@ -83,8 +84,15 @@ class ft_discord_command_bot(discord.Client):
         cmd = message.lstrip("*")
         if cmd in self.base_commands:
             return self.base_commands[cmd]
+        else:
+            return None
 
     def process_search(self, message):
+        ## if the search term is already in the command list
+        is_base = self.process_command(message)
+        if is_base is not None:
+            return is_base
+
         msg = message.replace(" ", "%20")
         full_url = f'{self.search_base_url}{msg}'
         return f'{self.base_commands["search"]}{full_url}'
@@ -92,6 +100,11 @@ class ft_discord_command_bot(discord.Client):
     def process_gh(self, message):
         msg = message.replace(" ", "%20")
         full_url = f'{self.gh_base_url}{msg}'
+        return f'{full_url}'
+
+    def process_lmgtfy(self, message):
+        msg = message.replace(" ", "%20")
+        full_url = f'{self.lmgtfy_base_url}{msg}'
         return f'{full_url}'
 
     def _rate_limited(self, call=None, limit_sec=20):
@@ -169,9 +182,15 @@ class ft_discord_command_bot(discord.Client):
                     else:
                         gh_search_msg = " ".join(args)
                         resp = self.process_gh(gh_search_msg)
+                elif cmd == "**lmgtfy":
+                    if not args:
+                        await message.channel.send(
+                             "Nothing is the opposite of something.")
+                    lmgtfy_search_msg = " ".join(args)
+                    resp = self.process_lmgtfy(lmgtfy_search_msg)
                 else:
                     resp = self.process_command(cmd)
-                
+
                 if resp:
                     reply_msg = ""
                     if reply:
@@ -187,6 +206,10 @@ class ft_discord_command_bot(discord.Client):
                         elif cmd == "**gh":
                             await message.channel.send(
                                 f"{reply_msg}`{gh_search_msg}` search results from GitHub: {resp}"
+                            )
+                        elif cmd == "**lmgtfy":
+                            await message.channel.send(
+                                f"Google can help with that {reply_msg}: {resp}"
                             )
                         else:
                             # if mentioning a user specifically with `**cmd @user`
