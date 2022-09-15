@@ -177,13 +177,17 @@ class ft_discord_command_bot(discord.Client):
                     if reply:
                         # if replying to someone using discords reply feature
                         # await message.channel.send(f"{reply} {resp}")
-                        reply_msg = f"{reply} "
+                        reply_msg = f"{reply.mention} "
 
                     if arg1:
                         if cmd == "**search":
-                            await message.channel.send(f"{reply_msg}`{search_msg}`? {resp}")
+                            await message.channel.send(
+                                f"{reply_msg}`{search_msg}`? {resp}"
+                            )
                         elif cmd == "**gh":
-                            await message.channel.send(f"{reply_msg}`{gh_search_msg}` search results from GitHub: {resp}")
+                            await message.channel.send(
+                                f"{reply_msg}`{gh_search_msg}` search results from GitHub: {resp}"
+                            )
                         else:
                             # if mentioning a user specifically with `**cmd @user`
                             await message.channel.send(f"{arg1} {resp}")
