@@ -173,20 +173,23 @@ class ft_discord_command_bot(discord.Client):
                     resp = self.process_command(cmd)
                 
                 if resp:
+                    reply_msg = ""
                     if reply:
                         # if replying to someone using discords reply feature
-                        await message.channel.send(f"{reply.arg1} {resp}")
-                    elif arg1:
+                        # await message.channel.send(f"{reply} {resp}")
+                        reply_msg = f"{reply} "
+
+                    if arg1:
                         if cmd == "**search":
-                            await message.channel.send(f"`{search_msg}`? {resp}")
+                            await message.channel.send(f"{reply_msg}`{search_msg}`? {resp}")
                         elif cmd == "**gh":
-                            await message.channel.send(f"`{gh_search_msg}` search results from GitHub: {resp}")
+                            await message.channel.send(f"{reply_msg}`{gh_search_msg}` search results from GitHub: {resp}")
                         else:
                             # if mentioning a user specifically with `**cmd @user`
                             await message.channel.send(f"{arg1} {resp}")
                     else:
                         # basic response
-                        await message.channel.send(f"{resp}")
+                        await message.channel.send(f"{reply_msg}{resp}")
 
 
 def add_arguments():
