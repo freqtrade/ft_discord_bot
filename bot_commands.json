@@ -49,6 +49,10 @@
 
     "search": "I found information about that here: ",
 
+    "series":"A dataframe column is multiple values, not a single one. You see this error because you are trying to use a Series as a single row value. A common mistake is using a boolean conditional instead of vectorised operations with `df.loc`, e.g. `if df['close'] > df['close'].shift()` when it should be `df.loc[df['close'] > df['close'].shift()]`.",
+    
+    "shift":"The shift() function does not give you a single row value, but rotates the dataframe backwards into the past (with positive arguments) or forwards into the future (with negative arguments). See `**traps` about using shift() incorrectly.",
+    
     "shorting":"Shorting is not supported on spot, and supported on *isolated futures only*, i.e. cross margin is not yet available: https://www.freqtrade.io/en/stable/leverage/#shorting",
 
     "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
