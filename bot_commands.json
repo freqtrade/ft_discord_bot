@@ -25,7 +25,9 @@
 
     "FAQ":"Please read the FAQ, which explains this topic: https://www.freqtrade.io/en/stable/faq/#freqtrade-common-issues",
 
-    "freqai":"FreqAI Docs: https://www.freqtrade.io/en/latest/freqai/.",
+    "finta":"A TA library written in python: https://pypi.org/project/finta/",
+    
+    "freqai":"FreqAI Docs: https://www.freqtrade.io/en/latest/freqai/",
 
     "gh":"Freqtrade source code repositories: https://github.com/freqtrade",
 
@@ -45,6 +47,8 @@
 
     "pairlists":"Pairlists are a core part of how your strategy will perform. There are 2 core pairlist handlers, static and volume-based: https://www.freqtrade.io/en/stable/plugins/#pairlists-and-pairlist-handlers. Note that VolumePairList does not support backtesting mode. Look at the test-pairlist command for how to generate static lists from volume-based and other plugins.",
 
+    "pandas_ta":"A TA library written in python: https://twopirllc.github.io/pandas-ta/",
+    
     "rr":"Risk reward (RR) lets you compare the expected returns versus the risk, e.g. 1:2 means an expected risk of 1 unit currency to 2 units return. An example custom_stoploss implementing RR can be found here: https://github.com/freqtrade/freqtrade-strategies/blob/main/user_data/strategies/FixedRiskRewardLoss.py",
 
     "search": "I found information about that here: ",
@@ -57,7 +61,11 @@
 
     "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
 
+    "ta":"Technical Analysis underpins the interpretation of financial market data, and there are many libraries that provide various indicators to assess the market. Examples include `**talib`, `**pandas_ta`, `**finta` and more.",
+    
     "tailscale":"https://tailscale.com/ makes it easy to VPN your personal network of LAN and mobile devices, including freqtrade/freqUI running on a VPS. Free for up to 20 devices, and an alternative for SSH tunnels (see `**tunnel`).",
+
+    "talib":"One of the main analysis libraries that can be used in strategies, originally written in C and wrapped into python: https://mrjbq7.github.io/ta-lib/",
     
     "telegram":"Detailed instructions for setting up the Telegram service for freqtrade are here: https://www.freqtrade.io/en/stable/telegram-usage/",
 
