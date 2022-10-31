@@ -1,7 +1,7 @@
 {
     "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`). You may need to download historical candle data (see `**data`). You will likely need a powerful PC to perform backtesting depending on stategy complexity.",
 
-    "backticks":"Please use three backticks around your code snippets to format them in fixed width font. They are impossible to read, especially indentation, and will be deleted.",
+    "backticks":"Please use three backticks around your code snippets to format them in fixed width font. They are impossible to read, especially indentation, and will be deleted. Check the discord markdown documentation for formatting guides: https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-",
     
     "basics":"Please familiarise yourself with fundamental freqtrade terminology and bot execution logic: https://www.freqtrade.io/en/stable/bot-basics/",
 
