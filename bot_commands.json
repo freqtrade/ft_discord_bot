@@ -69,6 +69,8 @@
     
     "telegram":"Detailed instructions for setting up the Telegram service for freqtrade are here: https://www.freqtrade.io/en/stable/telegram-usage/",
 
+    "tias": "'Try it and see'. Sometimes there's no substitute for simply doing the thing instead of asking about the thing.",
+    
     "ticker":"Yes you can get ticker data in your strategy, but note that it varies by exchange and cannot be used in backtesting: https://www.freqtrade.io/en/stable/strategy-customization/#tickerpair",
 
     "tv":"TradingView often calculates indicators differently to other libraries such as TA-lib, and it allows you to do weird things like zero-lag adjustment and repainting, so it's unwise to compare Tradingview's indicators or strategies with its python equivalent. Don't use Tradingview to create or optimize your freqtrade strategy.",
