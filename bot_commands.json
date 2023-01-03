@@ -65,6 +65,8 @@
 
     "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
 
+    "stocks?":"No",
+    
     "ta":"Technical Analysis underpins the interpretation of financial market data, and there are many libraries that provide various indicators to assess the market. Examples include `**talib`, `**pandas_ta`, `**finta` and more.",
     
     "tailscale":"https://tailscale.com/ makes it easy to VPN your personal network of LAN and mobile devices, including freqtrade/freqUI running on a VPS. Free for up to 20 devices, and an alternative for SSH tunnels (see `**tunnel`).",
