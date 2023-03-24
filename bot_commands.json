@@ -29,6 +29,8 @@
     
     "freqai":"FreqAI Docs: https://www.freqtrade.io/en/latest/freqai/",
 
+    "futures":"Yes, freqtrade supports shorting and futures with leverage but **isolated only**: see https://www.freqtrade.io/en/stable/leverage/. Note that pairs are named differently to spot: https://www.freqtrade.io/en/stable/leverage/#pair-namings",
+    
     "gh":"Freqtrade source code repositories: https://github.com/freqtrade",
 
     "gpt":"Yes we know ChatGPT can make strategy code, but so can going to https://github.com/freqtrade/freqtrade-strategies. A bonus is that the strategies listed there actually work. There's a reason StackOverflow banned ChatGPT.",
