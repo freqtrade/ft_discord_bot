@@ -41,6 +41,8 @@
 
     "informative":"Informative pairs give you access to information from other/specific pairs and can be used on timeframes larger than your current strategy, e.g. 5m strategy, 1h informatives: https://www.freqtrade.io/en/stable/strategy-customization/#informative-pairs",
 
+    "issue":"Please use GitHub to raise your issue to the developers, paying close attention to the information you need to provide to avoid your issue being automatically closed: https://github.com/freqtrade/freqtrade/issues",  
+    
     "lookahead":"Backtesting processes all candles over your timerange at once, not row by row. So certain indicators or ways you access information in your strategy can introduce lookahead, i.e. using information from candles in the future. The most common things to avoid are using `.shift()` with negative values, and `iat[-1]` or `iloc` in `populate_` functions. See `**traps`, https://www.freqtrade.io/en/stable/strategy-customization/#common-mistakes-when-developing-strategies, and https://www.freqtrade.io/en/stable/strategy-advanced/#dataframe-access",
 
     "netbird":"https://netbird.io/, an alternative low-config VPN service to avoid exposing freqtrade/freqUI instances to the public internet. See also `**tailscale`",
