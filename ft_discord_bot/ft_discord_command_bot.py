@@ -18,13 +18,13 @@ logging.basicConfig(
 logger = logging.getLogger("ft_discord_command_bot")
 
 allowed_managers = [
-    "Hippocritical#5103",
-    "froggleston#5424",
-    "xmatthias#2871",
-    "stash86#2488",
-    "Perkmeister#2394",
-    "JoeSchr#5578",
-    "drafty#3608"
+    "hippocritical.",
+    "froggleston",
+    "xmatthias",
+    "stash86",
+    "perkmeister",
+    "joeschr",
+    "freqai"
 ]
 
 
