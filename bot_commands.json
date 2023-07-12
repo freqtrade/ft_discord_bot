@@ -39,7 +39,7 @@
 
     "hyperopt":"Hyperopting tries to find parameters that can improve your strategy by reducing drawdown, increasing average profit per trade, improving Sharpe and Sortino values, etc. It is not a magic bullet to immediately make your strategy better, and be careful to hyperopt a timerange that is NOT the same timerange that you're testing - you'll overfit. See: https://www.freqtrade.io/en/stable/hyperopt/",
 
-    "informative":"Informative pairs give you access to information from other/specific pairs and can be used on timeframes larger than your current strategy, e.g. 5m strategy, 1h informatives: https://www.freqtrade.io/en/stable/strategy-customization/#informative-pairs",
+    "informative":"Informative pairs give you access to information from other/specific pairs and can be used on the same or larger timeframes than your current strategy, e.g. 5m strategy, 1h informatives: https://www.freqtrade.io/en/stable/strategy-customization/#informative-pairs",
 
     "issue":"Please use GitHub to raise your issue to the developers, paying close attention to the information you need to provide to avoid your issue being automatically closed: https://github.com/freqtrade/freqtrade/issues",  
     
