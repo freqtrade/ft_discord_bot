@@ -8,6 +8,8 @@
     "best":"There is no best",
 
     "callbacks":"You can use various callback functions in your strategy to perform behaviour outside the `populate_` functions: https://www.freqtrade.io/en/stable/strategy-callbacks/",
+
+    "config":"Your configuration can have a big effect on how your strategy works. Please read the docs on config options: https://www.freqtrade.io/en/stable/configuration/. Post your config as a code block (see `**backticks`), minus any exchange keys, to get more assistance",
     
     "crosspost":"Posting the same question in more than one channel is like going into someone's house and shouting in every room asking where the oven is, when the oven is clearly in the kitchen. Stop it. Pick the most suitable channel for your question. Repeat offenders will be kicked.",
 
@@ -35,7 +37,7 @@
 
     "gpt":"Yes we know ChatGPT can make strategy code, but so can going to https://github.com/freqtrade/freqtrade-strategies. A bonus is that the strategies listed there actually work. There's a reason StackOverflow banned ChatGPT.",
     
-    "howtoask":"Please provide more information about your problem. Include the full logs including errors, strategy code to recreate the problem, any launch commands, and the link to the doc that you are following for help. Without this information, we are unable to efficiently help you.",
+    "howtoask":"Please provide more information about your problem. Include the full logs including errors, config(s) and strategy code to recreate the problem, any launch commands, and the link to the doc that you are following for help. Without this information, we are unable to efficiently help you.",
 
     "hyperopt":"Hyperopting tries to find parameters that can improve your strategy by reducing drawdown, increasing average profit per trade, improving Sharpe and Sortino values, etc. It is not a magic bullet to immediately make your strategy better, and be careful to hyperopt a timerange that is NOT the same timerange that you're testing - you'll overfit. See: https://www.freqtrade.io/en/stable/hyperopt/",
 
