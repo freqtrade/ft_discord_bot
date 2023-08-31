@@ -53,6 +53,8 @@
 
     "nobuys":"Your bot might not make trades immediately. Check that your stake_amount is high enough (over $20), your wallet size is enough to cover your number of slots (open_trade_slots * stake_amount), your tradeable_balance_ratio is not 1, and that there are no errors in the logs. If everything looks OK, just be patient!",
 
+    "support":"In an effort to improve server organization, we kindly request for you to move your support question to #support.",
+    
     "notworking": "'Doesn't work', 'not working', etc are useless. We aren't mind readers and we don't have access to your computer. Tell us what you've tried and what's happening, otherwise we simply cannot help you.",
     
     "orders":"The order type and orderbook determine how and at what prices your strategy will buy and sell. It can make big differences to how your strategy behaves, so it's good to understand what each of them do. https://www.freqtrade.io/en/stable/configuration/#prices-used-for-orders",
@@ -74,6 +76,8 @@
     "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
 
     "stocks?":"No",
+
+    "stonks?":"Nope",
     
     "ta":"Technical Analysis underpins the interpretation of financial market data, and there are many libraries that provide various indicators to assess the market. Examples include `**talib`, `**pandas_ta`, `**finta` and more.",
     
