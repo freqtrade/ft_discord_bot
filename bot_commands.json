@@ -49,7 +49,7 @@
 
     "netbird":"https://netbird.io/, an alternative low-config VPN service to avoid exposing freqtrade/freqUI instances to the public internet. See also `**tailscale`",
     
-    "NFI":"No, we don't understand it either. Head over to their discord.",
+    "NFI":"We do not advise the use of NFI for live trading. The author overstates profits, is dishonest about loss potential and risk, backtests are gamed, and users should do their full due diligence if considering using NFI-based strategies.",
 
     "nobuys":"Your bot might not make trades immediately. Check that your stake_amount is high enough (over $20), your wallet size is enough to cover your number of slots (open_trade_slots * stake_amount), your tradeable_balance_ratio is not 1, and that there are no errors in the logs. If everything looks OK, just be patient!",
 
