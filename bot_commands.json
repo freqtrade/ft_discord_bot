@@ -68,6 +68,8 @@
     "search": "I found information about that here: ",
 
     "series":"A dataframe column is multiple values, not a single one. You see this error because you are trying to use a Series as a single row value. A common mistake is using a boolean conditional instead of vectorised operations with `df.loc`, e.g. `if df['close'] > df['close'].shift()` when it should be `df.loc[df['close'] > df['close'].shift()]`.",
+
+    "scams": "Crypto is rife with scams. For this reason, do not: buy or sell strategies, click on any strange links in discord messages or DMs, ask about paid freelance developers to help write your strategy, share links to paid membership telegram or discord servers, advertise jobs, or be generally scammy. Please report any scam messages or DMs you recieve to #spam-scam-reports",
     
     "shift":"The shift() function does not give you a single row value, but rotates the dataframe backwards into the past (with positive arguments) or forwards into the future (with negative arguments). See `**traps` about using shift() incorrectly.",
     
