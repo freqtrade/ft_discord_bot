@@ -19,7 +19,7 @@
 
     "docs":"Please make sure to familiarize yourself with the documentation, which can be found here: https://www.freqtrade.io/",
 
-    "dry":"It's recommended to run a strategy in dry mode before going live to make sure performance matches what you expect from backtests. Most people recommend running a strategy dry for at least two weeks, preferably longer.",
+    "dry":"It's recommended to run a strategy in dry mode before going live to make sure performance matches what you expect from backtests. Most people recommend running a strategy dry for at least a month, preferably longer.",
 
     "dust":"Leftover small amounts of a traded coin after taking into account minimal trading amount and fees when you sell. It's completely normal and can be avoided on some exchanges, e.g. having some BNB in your wallet on Binance which will be used to offset the difference.",
     
@@ -35,7 +35,7 @@
     
     "gh":"Freqtrade source code repositories: https://github.com/freqtrade",
 
-    "gpt":"Yes we know ChatGPT can make strategy code, but so can going to https://github.com/freqtrade/freqtrade-strategies. A bonus is that the strategies listed there actually work. There's a reason StackOverflow banned ChatGPT.",
+    "gpt":" Do not use generative AI as a replacement for reading the docs. Yes we know AI can make strategy code, but so can going to https://github.com/freqtrade/freqtrade-strategies, and those strategies are designed for learning.",
     
     "howtoask":"Please provide more information about your problem. Include the full logs including errors, config(s) and strategy code to recreate the problem, any launch commands, and the link to the doc that you are following for help. Without this information, we are unable to efficiently help you.",
 
@@ -55,7 +55,7 @@
 
     "support":"In an effort to improve server organization, we kindly request for you to move your support question to #support.",
     
-    "notworking": "'Doesn't work', 'not working', etc are useless. We aren't mind readers and we don't have access to your computer. Tell us what you've tried and what's happening, otherwise we simply cannot help you.",
+    "notworking": "'Doesn't work', 'not working', etc are useless. We aren't mind readers and we don't have access to your computer. Please tell us what you've tried and what's happening, otherwise we simply cannot help you.",
     
     "orders":"The order type and orderbook determine how and at what prices your strategy will buy and sell. It can make big differences to how your strategy behaves, so it's good to understand what each of them do. https://www.freqtrade.io/en/stable/configuration/#prices-used-for-orders",
 
