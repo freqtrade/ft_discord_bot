@@ -15,6 +15,8 @@
 
     "data":"You may need historical data to run a backtest or even a strategy itself in dry or live. Read the docs here: https://www.freqtrade.io/en/stable/data-download/",
 
+    "defi?": "Freqtrade uses CCXT to talk to exchanges, most DeFi exchanges are not supported by CCXT, therefore they are not supported. If it is important to you, you could go to CCXT and make your support known!"
+
     "dataframe":"Freqtrade uses a pandas dataframe as the main data source, indexed by candle start date of the strategy main timeframe. It contains only complete closed candles. There is no such thing as an open or unfinished candle in the dataframe - only open rate and current rate exist in callbacks for open trades.",
     
     "docker":"Docker packages up all FT dependencies suitable for most strategies so makes it easier to install for first-timers, or people wanting scalable deployments. Head to #docker-support and check the docs: https://www.freqtrade.io/en/stable/docker_quickstart/",
