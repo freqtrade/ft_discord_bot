@@ -15,7 +15,7 @@
 
     "data":"You may need historical data to run a backtest or even a strategy itself in dry or live. Read the docs here: https://www.freqtrade.io/en/stable/data-download/",
 
-    "defi?": "Freqtrade uses CCXT to talk to exchanges, most DeFi exchanges are not supported by CCXT, therefore they are not supported. If it is important to you, you could go to CCXT and make your support known!",
+    "defi": "Freqtrade uses CCXT to talk to exchanges, and most DeFi exchanges are not supported by CCXT. Therefore they are not currently supported by Freqtrade. If it is important to you, you could go to CCXT and make your support known!",
 
     "dataframe":"Freqtrade uses a pandas dataframe as the main data source, indexed by candle start date of the strategy main timeframe. It contains only complete closed candles. There is no such thing as an open or unfinished candle in the dataframe - only open rate and current rate exist in callbacks for open trades.",
     
@@ -28,6 +28,8 @@
     "dust":"Leftover small amounts of a traded coin after taking into account minimal trading amount and fees when you sell. It's completely normal and can be avoided on some exchanges, e.g. having some BNB in your wallet on Binance which will be used to offset the difference.",
     
     "examples":"There are lots of example strategies in the #strategy-collection or in the main freqtrade-strategies repo: https://github.com/freqtrade/freqtrade-strategies",
+
+    "exchange":"Freqtrade uses CCXT to talk to exchanges, and each exchange needs a specific implementation within Freqtrade so takes time and effort to be supported. Currently supported exchanges are on the front page of the docs: https://www.freqtrade.io/en/stable/#supported-exchange-marketplaces",
 
     "FAQ":"Please read the FAQ, which explains this topic: https://www.freqtrade.io/en/stable/faq/#freqtrade-common-issues",
 
