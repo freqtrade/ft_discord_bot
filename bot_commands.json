@@ -77,7 +77,7 @@
 
     "scams": "Crypto is rife with scams. For this reason, do not: buy or sell strategies, click on any strange links in discord messages or DMs, ask about paid freelance developers to help write your strategy, share links to paid membership telegram or discord servers, advertise jobs, or be generally scammy. Please report any scam messages or DMs you recieve to #spam-scam-reports",
     
-    "shift":"The shift() function does not give you a single row value, but 'pushes' the dataframe values backwards into the past (with positive arguments) or 'pulls' values from the future (with negative arguments). See `**traps` about using shift() incorrectly.",
+    "shift":"The shift() function does not give you a single row value, but 'pushes' the dataframe values backwards into the past (with positive arguments) or 'pulls' values from the future (with negative arguments). Shifting through either end of the dataframe will result in NaNs. See `**traps` about using shift() incorrectly.",
     
     "shorting":"Shorting is not supported on spot, and supported on *isolated futures only*, i.e. cross margin is not yet available: https://www.freqtrade.io/en/stable/leverage/#shorting",
 
