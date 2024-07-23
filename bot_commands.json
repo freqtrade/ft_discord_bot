@@ -41,6 +41,8 @@
     
     "gh":"Freqtrade source code repositories: https://github.com/freqtrade",
 
+    "good":"Please don't ask us if backtests look good unless you share the strategy code. It's impossible for us to tell you if your backtest will be anywhere close to reality. Instead, dry run the strategy, backtest over the same timerange, and compare the trades made.",
+    
     "gpt":" Do not use generative AI as a replacement for reading the docs. Yes we know AI can make strategy code, but so can going to https://github.com/freqtrade/freqtrade-strategies, and those strategies are designed for learning.",
     
     "howtoask":"Please provide more information about your problem. Include the full logs including errors, config(s) and strategy code to recreate the problem, any launch commands, and the link to the doc that you are following for help. Without this information, we are unable to efficiently help you.",
