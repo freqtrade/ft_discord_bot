@@ -111,5 +111,7 @@
     
     "vps":"You can rent a virtual server (VPS) to host your bot. There are many to choose from, and each have pros and cons. For simple bots, Oracle free tier or any 1vCPU provider should be sufficient, e.g. vultr, hetzner, contabo, AWS, GCP, etc. For more bot instances or more complex strategies, you will need more powerful instances otherwise you will see indicator calculation lag and will miss trade entries/exits. FT does not endorse any specific VPS provider",
 
+    "ws":"Freqtrade supports websockets for a limited number of exchanges (as of 2024.6, binance spot and bybit), and will use them automatically unless specifically disabled. See https://www.freqtrade.io/en/latest/configuration/#consuming-exchange-websockets",
+    
     "yeet":"Do not backtest a strategy then go straight to live. Always use dry runs to confirm strategy performance. Backtests can be gamed, and are full of potential issues that will inflate profits. Please see `**traps` for examples.",
 }
