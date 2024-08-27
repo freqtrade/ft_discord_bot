@@ -1,5 +1,5 @@
 {
-    "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`). You may need to download historical candle data (see `**data`). You will likely need a powerful PC to perform backtesting depending on stategy complexity.",
+    "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`, `**yeet`). You may need to download historical candle data (see `**data`). Always use the `lookahead-analysis` and `recursive-analysis` commands to help assess strategy backtesting performance.",
 
     "backticks":"Please use three backticks around your code snippets to format them in fixed width font. They are impossible to read, especially indentation, and will be deleted. Check the discord markdown documentation for formatting guides: https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-",
     
@@ -15,15 +15,17 @@
 
     "data":"You may need historical data to run a backtest or even a strategy itself in dry or live. Read the docs here: https://www.freqtrade.io/en/stable/data-download/",
 
-    "defi": "Freqtrade uses CCXT to talk to exchanges, and most DeFi exchanges are not supported by CCXT. Therefore they are not currently supported by Freqtrade. If it is important to you, you could go to CCXT and make your support known!",
-
     "dataframe":"Freqtrade uses a pandas dataframe as the main data source, indexed by candle start date of the strategy main timeframe. It contains only complete closed candles. There is no such thing as an open or unfinished candle in the dataframe - only open rate and current rate exist in callbacks for open trades.",
+
+    "defi": "Freqtrade uses CCXT to talk to exchanges, and most DeFi exchanges are not supported by CCXT. Therefore they are not currently supported by Freqtrade. If it is important to you, you could go to the CCXT github and make your support known!",
+
+    "dex": "Freqtrade uses CCXT to talk to exchanges, and most DEXs are not supported by CCXT. Therefore they are not currently supported by Freqtrade. If it is important to you, you could go to the CCXT github and make your support known!",
     
     "docker":"Docker packages up all FT dependencies suitable for most strategies so makes it easier to install for first-timers, or people wanting scalable deployments. Head to #docker-support and check the docs: https://www.freqtrade.io/en/stable/docker_quickstart/",
 
     "docs":"Please make sure to familiarize yourself with the documentation, which can be found here: https://www.freqtrade.io/",
 
-    "dry":"It's recommended to run a strategy in dry mode before going live to make sure performance matches what you expect from backtests. Most people recommend running a strategy dry for at least a month, preferably longer.",
+    "dry":"It's essential to run a strategy in dry mode before going live to make sure performance matches what you expect from backtests. Most people recommend running a strategy dry for at least a month, preferably longer. See `**yeet`.",
 
     "dust":"Leftover small amounts of a traded coin after taking into account minimal trading amount and fees when you sell. It's completely normal and can be avoided on some exchanges, e.g. having some BNB in your wallet on Binance which will be used to offset the difference.",
     
@@ -36,6 +38,8 @@
     "finta":"A TA library written in python: https://pypi.org/project/finta/",
     
     "freqai":"FreqAI Docs: https://www.freqtrade.io/en/latest/freqai/",
+
+    "ftui":"A command line terminal interface for Freqtrade, currently in alpha: https://github.com/freqtrade/ftui",
 
     "futures":"Yes, freqtrade supports shorting and futures with leverage but **isolated only**: see https://www.freqtrade.io/en/stable/leverage/. Note that pairs are named differently to spot: https://www.freqtrade.io/en/stable/leverage/#pair-namings",
     
@@ -75,6 +79,8 @@
     
     "rr":"Risk reward (RR) lets you compare the expected returns versus the risk, e.g. 1:2 means an expected risk of 1 unit currency to 2 units return. An example custom_stoploss implementing RR can be found here: https://github.com/freqtrade/freqtrade-strategies/blob/main/user_data/strategies/FixedRiskRewardLoss.py",
 
+    "rules":"Please read the server rules before posting: #rules",
+
     "search": "I found information about that here: ",
 
     "series":"A dataframe column is multiple values, not a single one. You see this error because you are trying to use a Series as a single row value. A common mistake is using a boolean conditional instead of vectorised operations with `df.loc`, e.g. `if df['close'] > df['close'].shift()` when it should be `df.loc[df['close'] > df['close'].shift()]`.",
@@ -87,13 +93,15 @@
 
     "sponsor":"You can sponsor the maintainer of freqtrade here: https://github.com/sponsors/xmatthias",
 
+    "stacking":"Freqtrade does not support position stacking, i.e. multiple open trades on a single pair. You can however use `adjust_trade_position` to increase and decrease an already open position. See https://www.freqtrade.io/en/stable/strategy-callbacks/#adjust-trade-position",
+    
     "stocks?":"No",
 
     "stonks?":"Nope",
     
     "ta":"Technical Analysis underpins the interpretation of financial market data, and there are many libraries that provide various indicators to assess the market. Examples include `**talib`, `**pandas_ta`, `**finta` and more.",
     
-    "tailscale":"https://tailscale.com/ makes it easy to VPN your personal network of LAN and mobile devices, including freqtrade/freqUI running on a VPS. Free for up to 20 devices, and an alternative for SSH tunnels (see `**tunnel`).",
+    "tailscale":"https://tailscale.com/ makes it easy to VPN your personal network of LAN and mobile devices, including freqtrade/freqUI running on a VPS. Free for up to 100 devices, and an alternative for SSH tunnels (see `**tunnel`).",
 
     "talib":"One of the main analysis libraries that can be used in strategies, originally written in C and wrapped into python: https://mrjbq7.github.io/ta-lib/",
     
