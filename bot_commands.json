@@ -9,7 +9,7 @@
 
     "best":"There is no best",
 
-    "bias":"Always check for lookahead and recursive bias if you are seeing issues with signals and entries: https://www.freqtrade.io/en/stable/lookahead-analysis/, https://www.freqtrade.io/en/stable/recursive-analysis/",
+    "bias":"Always check for lookahead and recursive bias if you are seeing issues with signals and entries. See https://www.freqtrade.io/en/stable/lookahead-analysis and https://www.freqtrade.io/en/stable/recursive-analysis",
     
     "callbacks":"You can use various callback functions in your strategy to perform behaviour outside the `populate_` functions: https://www.freqtrade.io/en/stable/strategy-callbacks/",
 
