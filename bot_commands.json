@@ -1,5 +1,7 @@
 {
-    "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`, `**yeet`). You may need to download historical candle data (see `**data`). Always use the `lookahead-analysis` and `recursive-analysis` commands to help assess strategy backtesting performance.",
+    "101":"Please read the Freqtrade Strategy 101 quick start guide if you're just starting out developing strategies: https://www.freqtrade.io/en/stable/strategy-101/",
+    
+    "backtesting":"Backtesting is not a guarantee of future performance. Use it to test out strats before going dry (see `**dry`, `**yeet`). You may need to download historical candle data (see `**data`). Always use the `lookahead-analysis` and `recursive-analysis` commands to help assess strategy backtesting performance (see **bias).",
 
     "backticks":"Please use three backticks around your code snippets to format them in fixed width font. They are impossible to read, especially indentation, and will be deleted. Check the discord markdown documentation for formatting guides: https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-",
     
@@ -7,6 +9,8 @@
 
     "best":"There is no best",
 
+    "bias":"Always check for lookahead and recursive bias if you are seeing issues with signals and entries: https://www.freqtrade.io/en/stable/lookahead-analysis/, https://www.freqtrade.io/en/stable/recursive-analysis/",
+    
     "callbacks":"You can use various callback functions in your strategy to perform behaviour outside the `populate_` functions: https://www.freqtrade.io/en/stable/strategy-callbacks/",
 
     "config":"Your configuration can have a big effect on how your strategy works. Please read the docs on config options: https://www.freqtrade.io/en/stable/configuration/. Post your config as a code block (see `**backticks`), minus any exchange keys, to get more assistance",
