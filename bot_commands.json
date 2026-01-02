@@ -24,6 +24,8 @@
     "defi": "Freqtrade uses CCXT to talk to exchanges, and most DeFi exchanges are not supported by CCXT. Therefore they are not currently supported by Freqtrade. If it is important to you, you could go to the CCXT github and make your support known!",
 
     "dex": "Freqtrade uses CCXT to talk to exchanges, and most DEXs are not supported by CCXT. Therefore they are not currently supported by Freqtrade. If it is important to you, you could go to the CCXT github and make your support known!",
+
+    "diligence": "Please don't ask for the 'best strategy' - there's no such thing. You need to do your own due diligence to find, test, and decide whether a strategy meets your needs.",
     
     "docker":"Docker packages up all FT dependencies suitable for most strategies so makes it easier to install for first-timers, or people wanting scalable deployments. Head to #docker-support and check the docs: https://www.freqtrade.io/en/stable/docker_quickstart/",
 
