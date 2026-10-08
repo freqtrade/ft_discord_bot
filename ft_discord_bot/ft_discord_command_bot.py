@@ -278,9 +278,8 @@ def add_arguments():
                               'the commands JSON to load'),
                         dest='commandfile',
                         type=str,
-                        default=('https://raw.githubusercontent.com/'
-                                 'freqtrade/ft_discord_bot/master/'
-                                 'bot_commands.json')
+                        default=str((Path(__file__).resolve().parents[1] /
+                                     'bot_commands.json'))
                         )
     parser.add_argument('-g', '--guild-id',
                         help='Optional guild ID to register slash commands immediately',
