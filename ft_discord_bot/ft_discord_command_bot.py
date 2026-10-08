@@ -1,15 +1,16 @@
 import argparse
-import discord
 import logging
-import rapidjson
-
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
-from tabulate import tabulate
 from urllib.parse import urlparse
 
+import discord
+import rapidjson
 import requests
+from discord import app_commands
 from requests.exceptions import ConnectionError
+from tabulate import tabulate
 
 logging.basicConfig(
     level=logging.INFO,
@@ -18,17 +19,29 @@ logging.basicConfig(
 logger = logging.getLogger("ft_discord_command_bot")
 
 allowed_managers = [
-    "hippocritical.",
-    "froggleston",
-    "xmatthias",
-    "stash86",
-    "perkmeister",
-    "joeschr",
-    "freqai"
+    "hippocritical.#0",
+    "froggleston#0",
+    "xmatthias#0",
+    "stash86#0",
+    "perkmeister#0",
+    "joeschr#0",
+    "freqai#0"
 ]
 
 
 class ft_discord_command_bot(discord.Client):
+
+    def __init__(self, *args, **kwargs):
+        intents = kwargs.pop("intents", discord.Intents.default())
+        super().__init__(intents=intents, *args, **kwargs)
+        self._commandfile = None
+        self.guild_id = None
+        self.base_commands = {}
+        self.rate_limited_calls = {}
+        self.search_base_url = 'https://www.freqtrade.io/en/latest/?q='
+        self.gh_base_url = 'https://github.com/freqtrade/freqtrade/search?q='
+        self.lmgtfy_base_url = 'https://letmegooglethat.com/?q='
+        self.tree = app_commands.CommandTree(self)
 
     def setup(self, commandfile):
         self._commandfile = commandfile
@@ -41,8 +54,97 @@ class ft_discord_command_bot(discord.Client):
     def _version(self) -> str:
         return "1.00"
 
-    def _on_ready(self):
-        print(f'We have logged in as {self.user}')
+    async def setup_hook(self):
+        if self.base_commands:
+            self.register_commands()
+        if self.guild_id:
+            await self.tree.sync(guild=discord.Object(id=self.guild_id))
+        else:
+            await self.tree.sync()
+
+    async def on_ready(self):
+        logger.info("Logged in as %s", self.user)
+
+    @staticmethod
+    def _slash_name(command_name: str) -> str:
+        cleaned = re.sub(r"[^a-z0-9]+", "-", command_name.lower()).strip("-")
+        return cleaned or "command"
+
+    def register_commands(self):
+        async def manager_only(interaction: discord.Interaction) -> bool:
+            if str(interaction.user) not in allowed_managers:
+                raise app_commands.CheckFailure(
+                    "You are not allowed to use this command."
+                )
+            return True
+
+        @self.tree.command(
+            name="help",
+            description="Show available bot helper commands",
+        )
+        async def help_command(interaction: discord.Interaction):
+            await interaction.response.send_message(
+                f"```{self.print_commands()}```"
+            )
+
+        @self.tree.command(
+            name="reload-commands",
+            description="Reload the configured helper command list",
+        )
+        @app_commands.check(manager_only)
+        async def reload_commands(interaction: discord.Interaction):
+            try:
+                self.load_commands()
+            except Exception as exc:
+                await interaction.response.send_message(
+                    f"Unable to reload commands: {exc}"
+                )
+                return
+
+            await interaction.response.send_message("Reloaded commands")
+
+        @self.tree.command(
+            name="search",
+            description="Search the Freqtrade documentation for a query",
+        )
+        async def search_command(interaction: discord.Interaction, query: str):
+            await interaction.response.send_message(self.process_search(query))
+
+        @self.tree.command(
+            name="gh",
+            description="Search GitHub for a query",
+        )
+        async def gh_command(interaction: discord.Interaction, query: str):
+            await interaction.response.send_message(self.process_gh(query))
+
+        @self.tree.command(
+            name="lmgtfy",
+            description="Create a 'Let me Google that for you' link",
+        )
+        async def lmgtfy_command(interaction: discord.Interaction, query: str):
+            await interaction.response.send_message(self.process_lmgtfy(query))
+
+        for command_name in sorted(self.base_commands.keys()):
+            slash_name = self._slash_name(command_name)
+            if slash_name in {"help", "reload-commands", "search", "gh", "lmgtfy"}:
+                continue
+
+            async def command_handler(
+                interaction: discord.Interaction,
+                command_key=command_name,
+            ):
+                response = self.base_commands.get(command_key)
+                if not response:
+                    await interaction.response.send_message(
+                        f"No helper named '{command_key}' is currently configured."
+                    )
+                    return
+                await interaction.response.send_message(response)
+
+            self.tree.command(
+                name=slash_name,
+                description=f"Show the '{command_name}' helper response",
+            )(command_handler)
 
     def _uri_validator(self, x):
         result = urlparse(x)
@@ -88,7 +190,6 @@ class ft_discord_command_bot(discord.Client):
             return None
 
     def process_search(self, message):
-        ## if the search term is already in the command list
         is_base = self.process_command(message)
         if is_base is not None:
             return is_base
@@ -118,106 +219,6 @@ class ft_discord_command_bot(discord.Client):
 
         return False
 
-    async def on_message(self, message):
-        # don't let the bot reply to itself
-        if message.author == self.user:
-            return
-
-        cmdstring = message.content
-
-        # if discord reply used
-        reply = None
-        if message.type == discord.MessageType.reply:
-            reference = await message.channel.fetch_message(
-                message.reference.message_id)
-            reply = reference.author
-
-        # if mentioning a user specifically with `**cmd @user`
-        arg1 = None
-        cmds = cmdstring.split(" ")
-        cmd = cmds[0]
-        if len(cmds) > 1:
-            arg1 = cmds[1]
-            args = cmds[1:]
-
-        # all commands start with **. this can be customised.
-        if cmd.startswith('**'):
-            if cmd == "**help":
-                # send help
-                await message.channel.send(f"```{self.print_commands()}```")
-
-            elif cmd == "**reload_commands":
-                # reload command list from supplied file or URL
-                # if you are in the allowed user list
-                if str(message.author) in allowed_managers:
-                    try:
-                        self.load_commands()
-                        await message.channel.send(
-                            "Reloaded commands")
-                    except Exception as e:
-                        await message.channel.send(
-                            "Unable to reload commands: ", e)
-
-            elif cmd == "**test_ratelimit":
-                # rate limiting calls example
-                if self._rate_limited(call=cmd):
-                    await message.channel.send(
-                        f"The Oracle just provided some information \
-                        about {cmd} and needs time to recover.")
-                    return
-
-            else:
-                # check command against known loaded list of commands
-                if cmd == "**search":
-                    if not args:
-                        await message.channel.send(
-                             "The Oracle needs a query to search for.")
-                    search_msg = " ".join(args)
-                    resp = self.process_search(search_msg)
-                elif cmd == "**gh":
-                    gh_search_msg = ""
-
-                    if not args:
-                        resp = self.process_command(cmd)
-                    else:
-                        gh_search_msg = " ".join(args)
-                        resp = self.process_gh(gh_search_msg)
-                elif cmd == "**lmgtfy":
-                    if not args:
-                        await message.channel.send(
-                             "Nothing is the opposite of something.")
-                    lmgtfy_search_msg = " ".join(args)
-                    resp = self.process_lmgtfy(lmgtfy_search_msg)
-                else:
-                    resp = self.process_command(cmd)
-
-                if resp:
-                    reply_msg = ""
-                    if reply:
-                        # if replying to someone using discords reply feature
-                        # await message.channel.send(f"{reply} {resp}")
-                        reply_msg = f"{reply.mention} "
-
-                    if arg1:
-                        if cmd == "**search":
-                            await message.channel.send(
-                                f"{reply_msg}`{search_msg}`? {resp}"
-                            )
-                        elif cmd == "**gh":
-                            await message.channel.send(
-                                f"{reply_msg}`{gh_search_msg}` search results from GitHub: {resp}"
-                            )
-                        elif cmd == "**lmgtfy":
-                            await message.channel.send(
-                                f"Google can help with that {reply_msg}: {resp}"
-                            )
-                        else:
-                            # if mentioning a user specifically with `**cmd @user`
-                            await message.channel.send(f"{arg1} {resp}")
-                    else:
-                        # basic response
-                        await message.channel.send(f"{reply_msg}{resp}")
-
 
 def add_arguments():
     parser = argparse.ArgumentParser()
@@ -236,15 +237,18 @@ def add_arguments():
                                  'freqtrade/ft_discord_bot/master/'
                                  'bot_commands.json')
                         )
+    parser.add_argument('-g', '--guild-id',
+                        help='Optional guild ID to register slash commands immediately',
+                        dest='guild_id',
+                        type=int,
+                        default=None)
     args = parser.parse_args()
     return vars(args)
 
 
 def main(args):
-    intents = discord.Intents.default()
-    intents.message_content = True
-
-    client = ft_discord_command_bot(intents=intents)
+    client = ft_discord_command_bot()
+    client.guild_id = args.get("guild_id")
     client.setup(args.get("commandfile"))
     client.load_commands()
 
