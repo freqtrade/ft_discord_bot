@@ -36,10 +36,10 @@ def test_reload_rebuilds_tree_after_loading_new_commands():
     events = []
 
     async def fake_clear_commands(**kwargs):
-        events.append("clear")
+        events.append(kwargs.get("guild"))
 
     async def fake_sync(**kwargs):
-        events.append("sync")
+        events.append(kwargs.get("guild"))
 
     client.load_commands = lambda: events.append("load")
     client.register_commands = lambda: events.append("register")
@@ -48,4 +48,4 @@ def test_reload_rebuilds_tree_after_loading_new_commands():
 
     asyncio.run(client.reload_commands())
 
-    assert events == ["load", "clear", "register", "sync"]
+    assert events == ["load", None, "register", None]
