@@ -129,5 +129,5 @@
 
     "ws":"Freqtrade supports websockets for a limited number of exchanges (as of 2024.6, binance spot and bybit), and will use them automatically unless specifically disabled. See https://www.freqtrade.io/en/latest/configuration/#consuming-exchange-websockets",
 
-    "yeet":"Do not backtest a strategy then go straight to live. Always use dry runs to confirm strategy performance. Backtests can be gamed, and are full of potential issues that will inflate profits. Please see `/traps` for examples.",
+    "yeet":"Do not backtest a strategy then go straight to live. Always use dry runs to confirm strategy performance. Backtests can be gamed, and are full of potential issues that will inflate profits. Please see `/traps` for examples."
 }
