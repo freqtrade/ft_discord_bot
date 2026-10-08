@@ -115,10 +115,11 @@ class ft_discord_command_bot(discord.Client):
             interaction: discord.Interaction,
             user: discord.Member | None = None,
         ):
+            await interaction.response.defer()
             try:
                 await self.reload_commands()
             except Exception as exc:
-                await interaction.response.send_message(
+                await interaction.followup.send(
                     f"Unable to reload commands: {exc}"
                 )
                 return
@@ -126,7 +127,7 @@ class ft_discord_command_bot(discord.Client):
             response = "Reloaded commands"
             if user is not None:
                 response = f"{user.mention} {response}"
-            await interaction.response.send_message(response)
+            await interaction.followup.send(response)
 
         @self.tree.command(
             name="search",
