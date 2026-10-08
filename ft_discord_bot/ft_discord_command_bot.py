@@ -131,7 +131,7 @@ class ft_discord_command_bot(discord.Client):
 
             async def command_handler(
                 interaction: discord.Interaction,
-                command_key=command_name,
+                command_key: str = command_name,
             ):
                 response = self.base_commands.get(command_key)
                 if not response:
