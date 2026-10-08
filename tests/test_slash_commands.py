@@ -35,10 +35,10 @@ def test_reload_rebuilds_tree_after_loading_new_commands():
     client = ft_discord_command_bot()
     events = []
 
-    async def fake_clear_commands(**kwargs):
+    def fake_clear_commands(**kwargs):
         events.append(kwargs.get("guild"))
 
-    async def fake_sync(**kwargs):
+    def fake_sync(**kwargs):
         events.append(kwargs.get("guild"))
 
     client.load_commands = lambda: events.append("load")

@@ -58,24 +58,24 @@ class ft_discord_command_bot(discord.Client):
         if self.base_commands:
             self.register_commands()
         if self.guild_id:
-            await self.tree.sync(guild=discord.Object(id=self.guild_id))
+            self.tree.sync(guild=discord.Object(id=self.guild_id))
         else:
-            await self.tree.sync()
+            self.tree.sync()
 
     async def reload_commands(self):
         self.load_commands()
 
         if self.guild_id:
-            await self.tree.clear_commands(guild=discord.Object(id=self.guild_id))
+            self.tree.clear_commands(guild=discord.Object(id=self.guild_id))
         else:
-            await self.tree.clear_commands(guild=None)
+            self.tree.clear_commands(guild=None)
 
         self.register_commands()
 
         if self.guild_id:
-            await self.tree.sync(guild=discord.Object(id=self.guild_id))
+            self.tree.sync(guild=discord.Object(id=self.guild_id))
         else:
-            await self.tree.sync(guild=None)
+            self.tree.sync(guild=None)
 
     async def on_ready(self):
         logger.info("Logged in as %s", self.user)
