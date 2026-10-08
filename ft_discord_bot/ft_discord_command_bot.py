@@ -58,9 +58,9 @@ class ft_discord_command_bot(discord.Client):
         if self.base_commands:
             self.register_commands()
         if self.guild_id:
-            self.tree.sync(guild=discord.Object(id=self.guild_id))
+            await self.tree.sync(guild=discord.Object(id=self.guild_id))
         else:
-            self.tree.sync()
+            await self.tree.sync()
 
     async def reload_commands(self):
         self.load_commands()
@@ -73,9 +73,9 @@ class ft_discord_command_bot(discord.Client):
         self.register_commands()
 
         if self.guild_id:
-            self.tree.sync(guild=discord.Object(id=self.guild_id))
+            await self.tree.sync(guild=discord.Object(id=self.guild_id))
         else:
-            self.tree.sync(guild=None)
+            await self.tree.sync(guild=None)
 
     async def on_ready(self):
         logger.info("Logged in as %s", self.user)

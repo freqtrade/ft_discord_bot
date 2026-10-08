@@ -38,7 +38,7 @@ def test_reload_rebuilds_tree_after_loading_new_commands():
     def fake_clear_commands(**kwargs):
         events.append(kwargs.get("guild"))
 
-    def fake_sync(**kwargs):
+    async def fake_sync(**kwargs):
         events.append(kwargs.get("guild"))
 
     client.load_commands = lambda: events.append("load")
