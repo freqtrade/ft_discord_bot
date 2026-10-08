@@ -65,11 +65,14 @@ class ft_discord_command_bot(discord.Client):
     async def reload_commands(self):
         self.load_commands()
 
+        old_tree = self.tree
         if self.guild_id:
-            self.tree.clear_commands(guild=discord.Object(id=self.guild_id))
+            old_tree.clear_commands(guild=discord.Object(id=self.guild_id))
         else:
-            self.tree.clear_commands(guild=None)
+            old_tree.clear_commands(guild=None)
 
+        self._connection._command_tree = None
+        self.tree = app_commands.CommandTree(self)
         self.register_commands()
 
         if self.guild_id:
