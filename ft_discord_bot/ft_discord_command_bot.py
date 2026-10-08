@@ -38,6 +38,7 @@ class ft_discord_command_bot(discord.Client):
         self.guild_id = None
         self.base_commands = {}
         self.rate_limited_calls = {}
+        self._commands_registered = False
         self.search_base_url = 'https://www.freqtrade.io/en/latest/?q='
         self.gh_base_url = 'https://github.com/freqtrade/freqtrade/search?q='
         self.lmgtfy_base_url = 'https://letmegooglethat.com/?q='
@@ -64,21 +65,7 @@ class ft_discord_command_bot(discord.Client):
 
     async def reload_commands(self):
         self.load_commands()
-
-        old_tree = self.tree
-        if self.guild_id:
-            old_tree.clear_commands(guild=discord.Object(id=self.guild_id))
-        else:
-            old_tree.clear_commands(guild=None)
-
-        self._connection._command_tree = None
-        self.tree = app_commands.CommandTree(self)
-        self.register_commands()
-
-        if self.guild_id:
-            await self.tree.sync(guild=discord.Object(id=self.guild_id))
-        else:
-            await self.tree.sync(guild=None)
+        return "Reloaded commands"
 
     async def on_ready(self):
         logger.info("Logged in as %s", self.user)
@@ -89,6 +76,11 @@ class ft_discord_command_bot(discord.Client):
         return cleaned or "command"
 
     def register_commands(self):
+        if self._commands_registered:
+            return
+
+        self._commands_registered = True
+
         async def manager_only(interaction: discord.Interaction) -> bool:
             if str(interaction.user) not in allowed_managers:
                 raise app_commands.CheckFailure(

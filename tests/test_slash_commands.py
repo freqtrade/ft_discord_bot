@@ -32,22 +32,22 @@ def test_helper_command_handler_accepts_optional_user():
     assert sig.parameters["user"].default is None
 
 
-def test_reload_rebuilds_tree_after_loading_new_commands():
+def test_reload_refreshes_data_without_re_registering_commands():
     client = ft_discord_command_bot()
     events = []
 
     def fake_clear_commands(**kwargs):
-        events.append(kwargs.get("guild"))
+        events.append("clear")
 
     async def fake_sync(**kwargs):
-        events.append(kwargs.get("guild"))
+        events.append("sync")
 
     class FakeCommandTree:
         def clear_commands(self, **kwargs):
-            events.append(kwargs.get("guild"))
+            events.append("clear")
 
         async def sync(self, **kwargs):
-            events.append(kwargs.get("guild"))
+            events.append("sync")
 
         def command(self, *args, **kwargs):
             def decorator(fn):
@@ -55,14 +55,9 @@ def test_reload_rebuilds_tree_after_loading_new_commands():
             return decorator
 
     client.load_commands = lambda: events.append("load")
-    client.register_commands = lambda: events.append("register")
     client.tree.clear_commands = fake_clear_commands
     client.tree.sync = fake_sync
-    original_tree_ctor = bot_module.app_commands.CommandTree
-    bot_module.app_commands.CommandTree = lambda client: FakeCommandTree()
-    try:
-        asyncio.run(client.reload_commands())
-    finally:
-        bot_module.app_commands.CommandTree = original_tree_ctor
 
-    assert events == ["load", None, "register", None]
+    asyncio.run(client.reload_commands())
+
+    assert events == ["load"]
