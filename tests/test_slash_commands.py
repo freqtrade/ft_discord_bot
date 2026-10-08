@@ -1,3 +1,4 @@
+import asyncio
 import inspect
 
 from ft_discord_bot.ft_discord_command_bot import ft_discord_command_bot
@@ -28,3 +29,23 @@ def test_helper_command_handler_accepts_optional_user():
     sig = inspect.signature(captured["func"])
     assert "user" in sig.parameters
     assert sig.parameters["user"].default is None
+
+
+def test_reload_rebuilds_tree_after_loading_new_commands():
+    client = ft_discord_command_bot()
+    events = []
+
+    async def fake_clear_commands(**kwargs):
+        events.append("clear")
+
+    async def fake_sync(**kwargs):
+        events.append("sync")
+
+    client.load_commands = lambda: events.append("load")
+    client.register_commands = lambda: events.append("register")
+    client.tree.clear_commands = fake_clear_commands
+    client.tree.sync = fake_sync
+
+    asyncio.run(client.reload_commands())
+
+    assert events == ["load", "clear", "register", "sync"]

@@ -62,6 +62,21 @@ class ft_discord_command_bot(discord.Client):
         else:
             await self.tree.sync()
 
+    async def reload_commands(self):
+        self.load_commands()
+
+        if self.guild_id:
+            await self.tree.clear_commands(guild=discord.Object(id=self.guild_id))
+        else:
+            await self.tree.clear_commands()
+
+        self.register_commands()
+
+        if self.guild_id:
+            await self.tree.sync(guild=discord.Object(id=self.guild_id))
+        else:
+            await self.tree.sync()
+
     async def on_ready(self):
         logger.info("Logged in as %s", self.user)
 
@@ -101,7 +116,7 @@ class ft_discord_command_bot(discord.Client):
             user: discord.Member | None = None,
         ):
             try:
-                self.load_commands()
+                await self.reload_commands()
             except Exception as exc:
                 await interaction.response.send_message(
                     f"Unable to reload commands: {exc}"
