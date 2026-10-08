@@ -82,17 +82,24 @@ class ft_discord_command_bot(discord.Client):
             name="help",
             description="Show available bot helper commands",
         )
-        async def help_command(interaction: discord.Interaction):
-            await interaction.response.send_message(
-                f"```{self.print_commands()}```"
-            )
+        async def help_command(
+            interaction: discord.Interaction,
+            user: discord.Member | None = None,
+        ):
+            response = f"```{self.print_commands()}```"
+            if user is not None:
+                response = f"{user.mention} {response}"
+            await interaction.response.send_message(response)
 
         @self.tree.command(
             name="reload-commands",
             description="Reload the configured helper command list",
         )
         @app_commands.check(manager_only)
-        async def reload_commands(interaction: discord.Interaction):
+        async def reload_commands(
+            interaction: discord.Interaction,
+            user: discord.Member | None = None,
+        ):
             try:
                 self.load_commands()
             except Exception as exc:
@@ -101,28 +108,52 @@ class ft_discord_command_bot(discord.Client):
                 )
                 return
 
-            await interaction.response.send_message("Reloaded commands")
+            response = "Reloaded commands"
+            if user is not None:
+                response = f"{user.mention} {response}"
+            await interaction.response.send_message(response)
 
         @self.tree.command(
             name="search",
             description="Search the Freqtrade documentation for a query",
         )
-        async def search_command(interaction: discord.Interaction, query: str):
-            await interaction.response.send_message(self.process_search(query))
+        async def search_command(
+            interaction: discord.Interaction,
+            query: str,
+            user: discord.Member | None = None,
+        ):
+            response = self.process_search(query)
+            if user is not None:
+                response = f"{user.mention} {response}"
+            await interaction.response.send_message(response)
 
         @self.tree.command(
             name="gh",
             description="Search GitHub for a query",
         )
-        async def gh_command(interaction: discord.Interaction, query: str):
-            await interaction.response.send_message(self.process_gh(query))
+        async def gh_command(
+            interaction: discord.Interaction,
+            query: str,
+            user: discord.Member | None = None,
+        ):
+            response = self.process_gh(query)
+            if user is not None:
+                response = f"{user.mention} {response}"
+            await interaction.response.send_message(response)
 
         @self.tree.command(
             name="lmgtfy",
             description="Create a 'Let me Google that for you' link",
         )
-        async def lmgtfy_command(interaction: discord.Interaction, query: str):
-            await interaction.response.send_message(self.process_lmgtfy(query))
+        async def lmgtfy_command(
+            interaction: discord.Interaction,
+            query: str,
+            user: discord.Member | None = None,
+        ):
+            response = self.process_lmgtfy(query)
+            if user is not None:
+                response = f"{user.mention} {response}"
+            await interaction.response.send_message(response)
 
         for command_name in sorted(self.base_commands.keys()):
             slash_name = self._slash_name(command_name)
@@ -131,6 +162,7 @@ class ft_discord_command_bot(discord.Client):
 
             async def command_handler(
                 interaction: discord.Interaction,
+                user: discord.Member | None = None,
                 command_key: str = command_name,
             ):
                 response = self.base_commands.get(command_key)
@@ -139,6 +171,8 @@ class ft_discord_command_bot(discord.Client):
                         f"No helper named '{command_key}' is currently configured."
                     )
                     return
+                if user is not None:
+                    response = f"{user.mention} {response}"
                 await interaction.response.send_message(response)
 
             self.tree.command(
